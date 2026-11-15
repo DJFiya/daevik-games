@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from "react-router";
 import usePartySocket from "partysocket/react";
 import { ServerMessage, type ClientMessage, type Player } from "@daevik-games/shared";
 import { loadName } from "./name";
+import SiteHeader from "./SiteHeader";
 
 type Status = "connecting" | "open" | "reconnecting" | "full";
 
@@ -49,7 +50,7 @@ export default function Room() {
     };
   }, [socket]);
 
-  if (!name) return <Navigate to="/" replace />;
+  if (!name) return <Navigate to="/odd-one" replace />;
 
   async function copyLink() {
     await navigator.clipboard.writeText(window.location.href);
@@ -60,8 +61,10 @@ export default function Room() {
   const label = { connecting: "Connecting", reconnecting: "Reconnecting", open: `${players.length} in the room` };
 
   return (
-    <main className="page">
-      <Link to="/" className="back">
+    <>
+      <SiteHeader />
+      <main className="page narrow">
+      <Link to="/odd-one" className="back">
         Leave
       </Link>
       <h1 className="code">{code}</h1>
@@ -83,7 +86,8 @@ export default function Room() {
           </ul>
         </>
       )}
-    </main>
+      </main>
+    </>
   );
 }
 

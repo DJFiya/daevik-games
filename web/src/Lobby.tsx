@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router";
 import { PlayerName } from "@daevik-games/shared";
 import { loadName, saveName } from "./name";
+import SiteHeader from "./SiteHeader";
 
 const CODE_ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";
 
@@ -10,7 +11,7 @@ function newCode() {
   return Array.from(bytes, (b) => CODE_ALPHABET[b % CODE_ALPHABET.length]).join("");
 }
 
-export default function Home() {
+export default function Lobby() {
   const navigate = useNavigate();
   const [name, setName] = useState(loadName);
   const [code, setCode] = useState("");
@@ -18,7 +19,7 @@ export default function Home() {
 
   function go(room: string) {
     saveName(name.trim());
-    navigate(`/r/${room}`);
+    navigate(`/odd-one/${room}`);
   }
 
   function join(e: FormEvent) {
@@ -28,8 +29,10 @@ export default function Home() {
   }
 
   return (
-    <main className="page">
-      <h1>Games</h1>
+    <>
+      <SiteHeader />
+      <main className="page narrow">
+      <h1>The Odd One</h1>
       <label className="field">
         <span>Your name</span>
         <input value={name} onChange={(e) => setName(e.target.value)} maxLength={20} autoComplete="nickname" />
@@ -46,6 +49,7 @@ export default function Home() {
           Join
         </button>
       </form>
-    </main>
+      </main>
+    </>
   );
 }
