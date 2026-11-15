@@ -1,11 +1,15 @@
 import { Link } from "react-router";
 
-export default function SiteHeader() {
+export default function SiteHeader({ home = false }: { home?: boolean }) {
   return (
     <header className="site-header">
-      <Link to="/" className="site-name">
-        daevik games
-      </Link>
+      {home ? (
+        <h1 className="site-name">daevik games</h1>
+      ) : (
+        <Link to="/" className="site-name">
+          daevik games
+        </Link>
+      )}
     </header>
   );
 }
