@@ -32,3 +32,7 @@ dist-ssr
 .claude/
 .codex/
 skills-lock.json
+
+# Design tool scratch
+.impeccable/mocks/
+.impeccable/questions/
