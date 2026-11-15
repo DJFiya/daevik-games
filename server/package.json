@@ -1,0 +1,21 @@
+{
+  "name": "@daevik-games/server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p .",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@daevik-games/shared": "*",
+    "partyserver": "^0.5.10"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "^1.8.2",
+    "vitest": "^5.1.0",
+    "wrangler": "^4.162.0"
+  }
+}

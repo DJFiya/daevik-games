@@ -2,7 +2,10 @@
   "name": "daevik-games",
   "private": true,
   "type": "module",
-  "workspaces": [],
+  "workspaces": [
+    "shared",
+    "server"
+  ],
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",

@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "daevik-games-server",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-13",
+  "routes": [{ "pattern": "games-api.daevik.ca", "custom_domain": true }],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://games.daevik.ca,http://localhost:5173"
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "Room", "class_name": "Room" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Room"] }],
+  "observability": { "enabled": true },
+  "upload_source_maps": true
+}
